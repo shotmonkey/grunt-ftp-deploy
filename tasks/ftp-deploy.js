@@ -21,6 +21,8 @@ module.exports = function(grunt) {
   var Ftp = require('jsftp');
   var prompt = require('prompt');
 
+  var options;
+
   var toTransfer;
   var ftp;
   var localRoot;
@@ -162,20 +164,22 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('ftp-deploy', 'Deploy code over FTP', function() {
     var done = this.async();
 
+    options = this.options({});
+
     // Init
     ftp = new Ftp({
-      host: this.data.auth.host,
-      port: this.data.auth.port,
+      host: options.auth.host,
+      port: options.auth.port,
       onError: done
     });
 
-    localRoot = Array.isArray(this.data.src) ? this.data.src[0] : this.data.src;
-    remoteRoot = Array.isArray(this.data.dest) ? this.data.dest[0] : this.data.dest;
-    authVals = getAuthVals(this.data.auth);
-    exclusions = this.data.exclusions || [];
+    localRoot = Array.isArray(options.src) ? options.src[0] : options.src;
+    remoteRoot = Array.isArray(options.dest) ? options.dest[0] : options.dest;
+    authVals = getAuthVals(options.auth);
+    exclusions = options.exclusions || [];
     ftp.useList = true;
     toTransfer = dirParseSync(localRoot);
-    forceVerbose = this.data.forceVerbose === true ? true : false;
+    forceVerbose = options.forceVerbose === true ? true : false;
 
     // Getting all the necessary credentials before we proceed
     var needed = {
