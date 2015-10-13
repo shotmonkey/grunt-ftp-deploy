@@ -1,7 +1,7 @@
 {
   "name": "grunt-ftp-deploy",
   "description": "Deployment over FTP",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "homepage": "https://github.com/zonak/grunt-ftp-deploy",
   "author": {
     "name": "Zoran Nakev",
@@ -14,12 +14,10 @@
   "bugs": {
     "url": "https://github.com/zonak/grunt-ftp-deploy/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/zonak/grunt-ftp-deploy/blob/master/LICENSE-MIT"
-    }
-  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/zonak/grunt-ftp-deploy/blob/master/LICENSE-MIT"
+  }],
   "engines": {
     "node": "*"
   },
